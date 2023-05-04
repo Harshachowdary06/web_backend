@@ -50,9 +50,6 @@ const server = http.createServer((req, res) => {
 
      else if (req.url === '/api') {
 
-        
-        //TO CONNECT TO MY MONGODB CODE:     
-
         var input;
 
         const { MongoClient } = require('mongodb');
@@ -62,12 +59,8 @@ const server = http.createServer((req, res) => {
 
             const uri = 'mongodb+srv://Harsha:Harsha@cluster0.l3zibvl.mongodb.net/final?retryWrites=true&w=majority';
             const client = new MongoClient(uri, { useUnifiedTopology: true });
-
-            //Use a try-catch block to connect to the MongoDB Atlas cluster:
-            try {
-                //Import the MongoClient class from the mongodb package:
-                // Connect to MongoDB Atlas cluster
-                await client.connect();
+    try {
+         await client.connect();
                 console.log('Connected to MongoDB Atlas cluster');
 
                 const USA_presidents = client.db('final').collection('final');
@@ -81,13 +74,11 @@ const server = http.createServer((req, res) => {
                 input = presidents;
                 console.log('input data Harsha:');
                 console.log(input);
-                // Call the callback function with the data as a parameter
-                callback(input);
+                 callback(input);
 
             } catch (err) {
                 console.error(err);
             } finally {
-                // Close the MongoDB Atlas cluster connection
                 await client.close();
                 console.log('Disconnected from MongoDB Atlas cluster');
             }
@@ -98,7 +89,6 @@ const server = http.createServer((req, res) => {
             res.writeHead(200, { 'Content-type': 'application/json' })
             res.end(JSON.stringify(data));
         }
-        //mycode ends here
     }
     else {
         res.setHeader("Access-Control-Allow-Origin", "*");
