@@ -12,9 +12,9 @@ node index.js
 ```
 ## To see output entr the following in your browser:
 ```
-localhost:7909
+localhost:5129
 ```
-it defaultly runs in port 7909
+it defaultly runs in port 5129
 ## To access the working website use the link:
 ```
 https://sai-sri-harsha-backend.onrender.com
